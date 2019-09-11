@@ -27,6 +27,8 @@ public class UserController {
 
     @RequestMapping("selectAll")
     public PageInfo<User> selectAll(User user){
+
+        System.out.println("dd");
         return userService.findAllUser(user);
     }
 }

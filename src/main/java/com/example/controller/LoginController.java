@@ -3,6 +3,10 @@ package com.example.controller;
 import com.example.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author:0xOO
@@ -16,8 +20,11 @@ public class LoginController {
 
     @RequestMapping("/index")
     public String index(){
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String url = request.getRequestURL().toString();
+        System.out.println("url="+url);
 
-        return "/table_foo_table";
+        return "/index";
     }
 
     @RequestMapping("/doLogin")
