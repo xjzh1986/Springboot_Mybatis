@@ -22,10 +22,6 @@ public class LoginController {
 
     @RequestMapping("/doLogin")
     public String login(User user){
-        System.out.println("dddd");
-        System.out.println("KKK");
         return "/index";
     }
-
-
 }
