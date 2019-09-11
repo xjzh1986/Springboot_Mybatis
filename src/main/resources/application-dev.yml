@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates
+    suffix: .html
+    encoding: UTF-8
+    mode: LEGACYHTML5
+
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+          # 启动初始化连接数量
+          initial-size: 8
+          # 最小空闲连接
+          min-idle: 1
+          # 最大连接数量（包含使用中的和空闲的）
+          max-active: 20
+          # 最大连接等待时间 ，超出时间报错
+          max-wait: 60000
+          # 设置执行一次连接回收器的时间
+          time-between-eviction-runsMillis: 60000
+          # 设置时间： 该时间内没有任何操作的空闲连接会被回收
+          min-evictable-idle-timeMillis: 300000
+          # 验证连接有效性的sql
+          validation-query: select 'x' FROM DUAL
+           # 空闲时校验
+          test-while-idle: true
+          # 使用中是否校验有效性
+          test-on-borrow: false
+          # 归还连接池时是否校验
+          test-on-return: false
+          # mysql 不推荐打开预处理连接池
+          pool-prepared-statements: true
+          max-open-prepared-statements: 20
+          max-pool-prepared-statement-per-connection-size: 20
+          filters: stat
+          # sql合并统计 设置慢sql时间为500，超过500 会有记录提示
+          connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+           # 统计所有数据源状态
+          use-global-data-source-stat: true
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.entity
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+
+#pagehelper分页配置
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
