@@ -1,10 +1,15 @@
 package com.example.controller;
 
 import com.example.entity.User;
+import com.example.service.UserService;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,14 +22,17 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/index")
-    public String index(){
+    public String index(Model model, User user){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String url = request.getRequestURL().toString();
         System.out.println("url="+url);
-
-        return "/index";
+        PageInfo<User> pageInfo = userService.findAllUser(user);
+        model.addAttribute("s","2222");
+        return "/table_foo_table";
     }
 
     @RequestMapping("/doLogin")
