@@ -32,6 +32,7 @@ public class LoginController {
         System.out.println("url="+url);
         PageInfo<User> pageInfo = userService.findAllUser(user);
         model.addAttribute("s","2222");
+        model.addAttribute("a","3333");
         return "/table_foo_table";
     }
 
