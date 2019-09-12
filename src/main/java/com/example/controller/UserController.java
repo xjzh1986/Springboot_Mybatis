@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.entity.User;
 import com.example.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -31,6 +32,9 @@ public class UserController {
     @ResponseBody
     public PageInfo<User> selectAll(@RequestParam("page") int page,User user){
         PageInfo<User> pageInfo = userService.findAllUser(page,user);
+        // 用户组对象转JSON串
+        String jsonString = JSON.toJSONString(pageInfo);
+        System.out.println("jsonString:" + jsonString);
         return pageInfo;
     }
 }
