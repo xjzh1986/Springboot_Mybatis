@@ -29,10 +29,9 @@ public class UserService {
         userMapper.insert(user);
     }
 
-    public PageInfo<User> findAllUser(User user){
-        user.setPageNum(1);
-        user.setPageSize(5);
-        PageHelper.startPage(user.getPageNum(),user.getPageSize());
+    public PageInfo<User> findAllUser(int pageNum,User user){
+        int pageSize = 10;
+        PageHelper.startPage(pageNum,pageSize);
         List<User> list = userMapper.findAllUser(user);
         PageInfo<User> pageInfo = new PageInfo<User>(list);
         return pageInfo;

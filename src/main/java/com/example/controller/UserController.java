@@ -6,6 +6,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Author:0xOO
@@ -26,9 +28,9 @@ public class UserController {
     }
 
     @RequestMapping("selectAll")
-    public PageInfo<User> selectAll(User user){
-
-        System.out.println("dd");
-        return userService.findAllUser(user);
+    @ResponseBody
+    public PageInfo<User> selectAll(@RequestParam("page") int page,User user){
+        PageInfo<User> pageInfo = userService.findAllUser(page,user);
+        return pageInfo;
     }
 }

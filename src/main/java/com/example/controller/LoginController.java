@@ -27,12 +27,7 @@ public class LoginController {
 
     @RequestMapping("/index")
     public String index(Model model, User user){
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String url = request.getRequestURL().toString();
-        System.out.println("url="+url);
-        PageInfo<User> pageInfo = userService.findAllUser(user);
-        model.addAttribute("s","2222");
-        model.addAttribute("a","3333");
+
         return "/table_foo_table";
     }
 
