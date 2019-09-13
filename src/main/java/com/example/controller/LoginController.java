@@ -3,10 +3,14 @@ package com.example.controller;
 import com.example.entity.User;
 import com.example.service.UserService;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,13 +29,13 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/index")
-    public String index(Model model, User user){
-
+    @ApiOperation(value = "跳转首页" ,  notes="跳转首页")
+    @RequestMapping(value="/index",method= RequestMethod.GET)
+    public String index(){
         return "/table_foo_table";
     }
-
-    @RequestMapping("/doLogin")
+    @ApiOperation(value = "登录" ,  notes="登录")
+    @RequestMapping(value="/doLogin",method= RequestMethod.GET)
     public String login(User user){
         return "/index";
     }

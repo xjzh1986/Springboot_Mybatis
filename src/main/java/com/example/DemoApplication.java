@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @MapperScan("com.example.mapper") //扫描的mapper
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.example")
 public class DemoApplication {
 
 	public static void main(String[] args) {
