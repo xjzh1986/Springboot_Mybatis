@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             throws Exception {
         System.out.println("开始拦截.........");
         //业务代码
-        return false;
+        return true;
     }
 
     /**

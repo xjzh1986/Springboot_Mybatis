@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.example.Constants.PermissionConstants;
 import com.example.entity.User;
+import com.example.interceptor.RequiredPermission;
 import com.example.service.UserService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiOperation;
@@ -32,6 +34,7 @@ public class UserController {
 
     @ApiOperation(value = "查询用户信息" ,  notes="查询用户信息")
     @RequestMapping(value="/selectAll",method= RequestMethod.POST)
+    @RequiredPermission(PermissionConstants.ADMIN_PRODUCT_LIST) // 权限注解
     @ResponseBody
     public PageInfo<User> selectAll(@RequestParam("page") int page,User user){
         PageInfo<User> pageInfo = userService.findAllUser(page,user);

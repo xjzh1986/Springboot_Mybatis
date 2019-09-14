@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import com.example.Constants.PermissionConstants;
 import com.example.entity.User;
+import com.example.interceptor.RequiredPermission;
 import com.example.service.UserService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiOperation;
@@ -31,9 +33,11 @@ public class LoginController {
 
     @ApiOperation(value = "跳转首页" ,  notes="跳转首页")
     @RequestMapping(value="/index",method= RequestMethod.GET)
+    @RequiredPermission(PermissionConstants.ADMIN_PRODUCT_LIST) // 权限注解
     public String index(){
         return "/table_foo_table";
     }
+
     @ApiOperation(value = "登录" ,  notes="登录")
     @RequestMapping(value="/doLogin",method= RequestMethod.GET)
     public String login(User user){

@@ -298,6 +298,9 @@
             $.ajax({ //去后台查询第一页数据
                 type : "post",
                 url : "/selectAll",
+                headers: {
+                    'token': 'pc'
+                },
                 dataType : "json",
                 data : {page : '1'}, //参数：当前页为1
                 success : function(data) {
@@ -326,6 +329,9 @@
                             $.ajax({//根据page去后台加载数据
                                 url : "/selectAll",
                                 type : "post",
+                                headers: {
+                                    'token': 'pc'
+                                },
                                 dataType : "json",
                                 data : {"page" : page},
                                 success : function(data) {
