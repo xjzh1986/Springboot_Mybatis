@@ -8,6 +8,8 @@ spring:
     suffix: .html
     encoding: UTF-8
     mode: LEGACYHTML5
+  mvc:
+    static-path-pattern: /static/**
 
   datasource:
     username: root

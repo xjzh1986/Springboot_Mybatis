@@ -21,8 +21,8 @@ public class SecurityInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String page = request.getParameter("page");
-        String tt = request.getHeader("token");
+//        String page = request.getParameter("page");
+//        String tt = request.getHeader("token");
 
         // 验证权限
         if (this.hasPermission(handler)) {
