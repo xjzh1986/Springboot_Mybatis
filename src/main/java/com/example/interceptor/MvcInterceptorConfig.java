@@ -29,7 +29,10 @@ public class MvcInterceptorConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(securityInterceptor()).excludePathPatterns("/static/*")
+//        registry.addInterceptor(securityInterceptor())
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/static/*");
+        registry.addInterceptor(securityInterceptor()).excludePathPatterns("/static/**")
                 .excludePathPatterns("/error").addPathPatterns("/**");
     }
 
