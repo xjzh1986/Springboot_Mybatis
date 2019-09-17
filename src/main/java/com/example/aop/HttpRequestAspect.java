@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class HttpRequestAspect {
     private static final Logger log = LoggerFactory.getLogger(HttpRequestAspect.class);
-
     public static long startTime;
     public static long endTime;
 
